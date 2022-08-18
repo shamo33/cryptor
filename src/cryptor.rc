@@ -1,0 +1,43 @@
+#include <winver.h>
+#include "cryptor_ver.h"
+#pragma code_page(65001)
+
+#define CRYPTOR_VER CRYPTOR_VER_MAJOR,CRYPTOR_VER_MINOR,CRYPTOR_VER_REVISION,CRYPTOR_VER_BUILD
+#define CRYPTOR_VER_STR CRYPTOR_VER_STR_HELPER1(CRYPTOR_VER_MAJOR.CRYPTOR_VER_MINOR.CRYPTOR_VER_REVISION.CRYPTOR_VER_BUILD)
+#define CRYPTOR_VER_STR_HELPER1(a) CRYPTOR_VER_STR_HELPER2(a)
+#define CRYPTOR_VER_STR_HELPER2(a) #a
+#ifdef _WIN64
+#define CRYPTOR_VER_BIT_STR "(x64)"
+#else
+#define CRYPTOR_VER_BIT_STR "(x86)"
+#endif
+
+
+VS_VERSION_INFO	VERSIONINFO
+	FILEVERSION	     CRYPTOR_VER
+	PRODUCTVERSION   CRYPTOR_VER
+	FILEFLAGSMASK    VS_FFI_FILEFLAGSMASK
+	FILEFLAGS        0
+	FILEOS           VOS__WINDOWS32
+	FILETYPE         VFT_DLL
+BEGIN
+	BLOCK "VarFileInfo"
+	BEGIN
+		VALUE "Translation", 0x0409, 0x04e4
+	END
+
+	BLOCK "StringFileInfo"
+	BEGIN
+		BLOCK "040904E4"
+		BEGIN
+			VALUE "CompanyName",      "Mystia.org Project"
+			VALUE "FileDescription",  "CryptK2-Frontend " CRYPTOR_VER_BIT_STR
+			VALUE "FileVersion",      CRYPTOR_VER_STR
+			VALUE "InternalName",     "cryptk2.exe"
+			VALUE "LegalCopyright",   "© Mystia.org Project 2022"
+			VALUE "OriginalFilename", "cryptk2.exe"
+			VALUE "ProductName",      "CryptK2"
+			VALUE "ProductVersion",   CRYPTOR_VER_STR
+		END
+	END
+END

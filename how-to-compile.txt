@@ -1,0 +1,6 @@
+intel コマンドプロンプトで実行すること。
+
+icl -O3 -arch:SSE2 -Qfreestanding -Qsafeseh- -Qopt-report-embed- -c src/cryptk2.c -Foobj/cryptk2.o
+D:\dd\i686-5.2.0-release-win32-dwarf-rt_v4-rev0\bin\gcc -O3 -msse2 -fno-ident -c src/cryptor.c -o obj/cryptor.o
+D:\dd\i686-5.2.0-release-win32-dwarf-rt_v4-rev0\bin\windres src/cryptor.rc obj/cryptor_rc.o
+D:\dd\i686-5.2.0-release-win32-dwarf-rt_v4-rev0\bin\gcc -s -Wl,-pie,--dynamicbase,--nxcompat,--large-address-aware,-e,_mainCRTStartup obj/*.o -o release/cryptor.exe
